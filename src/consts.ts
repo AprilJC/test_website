@@ -1,6 +1,5 @@
-export const SITE_TITLE = "My Blog";
-export const SITE_DESCRIPTION = "写字·记录·思考";
+export const SITE_TITLE = "April's Island";
+export const SITE_DESCRIPTION = "一些无逻辑碎碎念";
 export const SOCIAL_LINKS = {
-  github: "https://github.com/yourusername",
-  twitter: "https://twitter.com/yourusername",
+  LinkedIn: "www.linkedin.com/in/april-du-370a95238",
 };

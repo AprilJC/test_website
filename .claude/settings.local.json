@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(CLAUDE_PLUGIN_ROOT=\"/Users/april/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.0\" && $CLAUDE_PLUGIN_ROOT/lib/brainstorm-server/start-server.sh --project-dir /Users/april/Documents/ClaudeCode/website)",
+      "Bash(cd /Users/april/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.0/lib/brainstorm-server && CLAUDE_PLUGIN_ROOT=\"/Users/april/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.0\" bash start-server.sh --project-dir /Users/april/Documents/ClaudeCode/website 2>&1)",
+      "Bash(cd /Users/april/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.0/lib/brainstorm-server && npm install 2>&1 | tail -5)",
+      "Bash(npm create:*)",
+      "Bash(cd /Users/april/Documents/ClaudeCode/website/whole-wind && mv * ../ 2>/dev/null; mv .* ../ 2>/dev/null; ls /Users/april/Documents/ClaudeCode/website/)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(ls -la /Users/april/Documents/ClaudeCode/website/ | grep -E \"\\\\.\\(ts|js|astro\\)$\")",
+      "Bash(ls -la /Users/april/Documents/ClaudeCode/website/*.config.* 2>/dev/null || echo \"No config files found\")",
+      "Bash(grep -r \"content.config\" /Users/april/Documents/ClaudeCode/website/src/ --include=\"*.ts\" --include=\"*.js\" --include=\"*.astro\" 2>/dev/null | head -5)",
+      "Bash(node -e \"import\\('./src/content.config.ts'\\).then\\(m => console.log\\(m\\)\\)\" 2>&1 | head -20)",
+      "Bash(node -e \"const p=require\\('/Users/april/Documents/ClaudeCode/website/package.json'\\); console.log\\('build:', p.scripts.build\\); console.log\\('dev:', p.scripts.dev\\);\")",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
