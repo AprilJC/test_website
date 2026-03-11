@@ -1,0 +1,122 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="wrapper">
+        <div class="site-header">
+          <h1>{SITE_TITLE}</h1>
+          <p class="tagline">{SITE_DESCRIPTION}</p>
+        </div>
+        <ul class="post-list">
+          {posts.map((post) => {
+            const date = post.data.date.toLocaleDateString('zh-CN', {
+              year: 'numeric', month: 'long', day: 'numeric'
+            });
+            return (
+              <li>
+                <a href={`/blog/${post.id}/`} class="post-card">
+                  <div class="post-date">{date}</div>
+                  <div class="post-title">{post.data.title}</div>
+                  {post.data.description && (
+                    <div class="post-desc">{post.data.description}</div>
+                  )}
+                  <div class="post-read">阅读全文 →</div>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+        {posts.length === 0 && (
+          <p class="empty">还没有文章，快去 <code>src/content/blog/</code> 新建一篇吧。</p>
+        )}
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .site-header {
+    padding: 2.5rem 0 2rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .site-header h1 { margin-top: 0; font-size: 1.75rem; }
+  .tagline {
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    margin: 0.25rem 0 0;
+  }
+
+  .post-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .post-card {
+    display: block;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    transition: background 0.1s;
+  }
+  .post-card:hover { text-decoration: none; }
+  .post-card:hover .post-title { color: var(--accent); }
+
+  .post-date {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
+  }
+
+  .post-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.4rem;
+    transition: color 0.15s;
+  }
+
+  .post-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  .post-read {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .empty {
+    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    padding: 2rem 0;
+  }
+</style>

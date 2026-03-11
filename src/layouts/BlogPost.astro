@@ -1,0 +1,72 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+  title: string;
+  description?: string;
+  date?: Date;
+}
+
+const { title, description, date } = Astro.props;
+
+const formattedDate = date
+  ? date.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <BaseHead title={title ?? SITE_TITLE} description={description ?? SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <div class="wrapper">
+        {formattedDate && (
+          <div class="post-meta">
+            <time>{formattedDate}</time>
+          </div>
+        )}
+        <article class="prose">
+          <slot />
+        </article>
+        <div class="back-link">
+          <a href="/">← 返回博客</a>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .post-meta {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .prose :global(h1) {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--text-heading);
+  }
+
+  .back-link {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+  }
+  .back-link a { color: var(--text-muted); }
+  .back-link a:hover { color: var(--accent); text-decoration: none; }
+</style>

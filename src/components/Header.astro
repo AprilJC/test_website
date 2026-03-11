@@ -1,0 +1,61 @@
+---
+import { SITE_TITLE } from '../consts';
+
+const { pathname } = Astro.url;
+const isAbout = pathname.startsWith('/about');
+---
+
+<header>
+  <nav class="wrapper">
+    <a href="/" class="site-title">{SITE_TITLE}</a>
+    <div class="nav-links">
+      <a href="/" class:list={[{ active: !isAbout }]}>博客</a>
+      <a href="/about" class:list={[{ active: isAbout }]}>关于我</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .site-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    text-decoration: none;
+  }
+  .site-title:hover { color: var(--accent); text-decoration: none; }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+    text-decoration: none;
+  }
+</style>
