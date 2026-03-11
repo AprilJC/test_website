@@ -1,12 +1,14 @@
 ---
-   title: "Good PM / Bad PM"
-   date: 2026-03-02
-   description: "a16z 合伙人在 1996 年写的经典文章，对于如何成为好的 PM 做了明确的定义"
-   ---
+title: "Good PM / Bad PM"
+date: 2026-03-02
+description: "a16z 合伙人在 1996 年写的经典文章，对于如何成为好的 PM 做了明确的定义"
+---
 
-   **原文**：https://a16z.com/good-product-manager-bad-product-manager/
+**原文**：https://a16z.com/good-product-manager-bad-product-manager/
 
-   |  | 😄 Good PM | ☹️ Bad PM |
+---
+
+|  | 😄 Good PM | ☹️ Bad PM |
 |------|------|------|
 | **责任感 / 自我定位** | 把自己视为产品的 CEO，负责产品的成败。承担“正确产品 / 正确时机”的责任。对市场、产品本身、竞争情况都了解清楚，并从这些信息中做决策。  | 面对失败始终在想借口：资源不足，合作方不配合，竞品投入更多更久。总是指责外部环境，而非检讨自己或调整方向。  |
 | **角色边界 / 工作内容聚焦** | 聚焦“做什么（what）”而不是“怎么做（how）”。明确目标，交付 what，和协作方明确分工 | 喜欢干“how”的部分，比如过度参与开发细节或决定实现方式。经常参加陷入细节的会议讨论，承担职责范围以外的任务 |
